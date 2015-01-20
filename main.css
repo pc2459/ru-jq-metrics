@@ -129,6 +129,16 @@ section{
 	margin: 40px 0 0 0;
 }
 
+/* Buttons */
+
+#stats{
+	position: fixed;
+	right: 5px;
+	top: 5px;
+
+	font-size: 1em;
+}
+
 /* Masthead */
 
 .fullbg{
@@ -180,4 +190,5 @@ footer {
 	height: 80px;
 	color: #FAFDFF;
 	padding: 20px 0 0px 10px;
+	letter-spacing: 0.25rem;
 }
