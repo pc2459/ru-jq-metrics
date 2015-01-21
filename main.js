@@ -10,6 +10,7 @@ $(document).on('ready', function() {
 			timeOnMiddle = 0,
 			timeOnFooter = 0;
 
+
 	// Track signup click
 	$("#sign-up-button").on("click", function(){
 		clickedSignup = new Date();
@@ -99,26 +100,26 @@ $(document).on('ready', function() {
 
 		// Find time till sign up
 
-		// var tillSignup = isNaN(clickedSignup) ?  : (clickedSignup - enteredPage) / 1000;
-		var tillSignup = ((clickedSignup - enteredPage) / 1000);
+		var signedUp = isNaN(clickedSignup) ? "<p>Not yet signed up.</p>" : ("<p>Took " + (clickedSignup - enteredPage) / 1000 + "seconds to sign up");
+		// var tillSignup = ((clickedSignup - enteredPage) / 1000);
 
 		// Find time on sections 
-		timeOnMasthead = timeOnMasthead/1000; 
-		timeOnDemo = timeOnDemo / 1000; 
-		timeOnGallery = timeOnGallery/1000;
-		timeOnMiddle = timeOnMiddle/1000;
-		timeOnFooter = timeOnFooter/1000;
+		var totalTimeOnMasthead = timeOnMasthead/1000; 
+		var totalTimeOnDemo = timeOnDemo / 1000; 
+		var totalTimeOnGallery = timeOnGallery/1000;
+		var totalTimeOnMiddle = timeOnMiddle/1000;
+		var totalTimeOnFooter = timeOnFooter/1000;
 
 		var lightbox = '<div class="lightbox-bg"><div class="lightbox">' + 
 										'<p>Scrolled ' + percentScrolled + '%</p>' +
 										'<p>Scrolled a distance of ' + scrolled + '</p>' + 
 										"<p>Been on page " + timeOnPage.toFixed(2) + " seconds</p>" +
-										"<p>Took " + tillSignup.toFixed(2) + " seconds till sign up</p>" +
-										"<p>Spent " + timeOnMasthead.toFixed(2) + " seconds on the masthead</p>" +
-										"<p>Spent " + timeOnDemo.toFixed(2) + " seconds on the demo</p>" +
-										"<p>Spent " + timeOnGallery.toFixed(2) + " seconds on the gallery</p>" +
-										"<p>Spent " + timeOnMiddle.toFixed(2) + " seconds on the middle</p>" +
-										"<p>Spent " + timeOnFooter.toFixed(2) + " seconds on the footer</p>" +
+										signedUp +
+										"<p>Spent " + totalTimeOnMasthead.toFixed(2) + " seconds on the masthead</p>" +
+										"<p>Spent " + totalTimeOnDemo.toFixed(2) + " seconds on the demo</p>" +
+										"<p>Spent " + totalTimeOnGallery.toFixed(2) + " seconds on the gallery</p>" +
+										"<p>Spent " + totalTimeOnMiddle.toFixed(2) + " seconds on the middle</p>" +
+										"<p>Spent " + totalTimeOnFooter.toFixed(2) + " seconds on the footer</p>" +
 										'<p><a href="#" id="close-lightbox">Close</a></p>' +
 										"</div></div>";
 
