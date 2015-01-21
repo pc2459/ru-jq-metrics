@@ -1,7 +1,18 @@
 $(document).on('ready', function() {
 
-
-	
+	// // Heatmap
+	// // create instance
+	// var heatmapInstance = h337.create({
+	//   container: document.querySelector('.heatmap'),
+	//   radius: 50
+	// });
+	// document.querySelector('.heatmap').onmousemove = function(ev) {
+	//   heatmapInstance.addData({
+	//     x: ev.layerX,
+	//     y: ev.layerY,
+	//     value: 1
+	//   });
+	// };
 
 	// Track when user came onto page
 	var enteredPage = new Date();
@@ -11,7 +22,6 @@ $(document).on('ready', function() {
 			timeOnGallery = 0,
 			timeOnMiddle = 0,
 			timeOnFooter = 0;
-
 
 	// Track signup click
 	$("#sign-up-button").on("click", function(){
@@ -113,7 +123,6 @@ $(document).on('ready', function() {
 		var totalTimeOnFooter = timeOnFooter/1000;
 
 		
-
 		var lightbox = '<div class="lightbox-bg center"><div class="lightbox">' +
 										'<h2>Statistics</h2>' + 
 										'<p>Scrolled ' + percentScrolled.toFixed(2) + '%</p>' +
@@ -129,16 +138,13 @@ $(document).on('ready', function() {
 										'<p><a href="#" id="close-lightbox">Close</a></p>' +
 										"</div></div>";
 
-
-
-
+		// Append lightbox to DOM
 		$("body").append(lightbox); 
 
-
-
-			// Get context with jQuery - using jQuery's .get() method.
+		// Get context for chart with jQuery - using jQuery's .get() method.
 		var ctx = $("#chart").get(0).getContext("2d");
 
+		// Determine data for pie chart
 		var data = [
 		    {
 		        value: totalTimeOnMasthead,
@@ -170,17 +176,13 @@ $(document).on('ready', function() {
 		        highlight: "#CC68B6",
 		        label: "Footer"
 		    }
-
 		];
 
+		// Create piechart in place
+		var myNewChart = new Chart(ctx).Pie(data,{percentageInnerCutout : 50});			
 
-			// This will get the first returned node in the jQuery collection.
-			var myNewChart = new Chart(ctx).Pie(data);
-
-			
-
-		
 	});
+
 
 	// Hide lightbox
 	$("body").on("click","#close-lightbox",function(){

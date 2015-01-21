@@ -222,3 +222,47 @@ footer {
 	padding: 20px 0 0px 10px;
 	letter-spacing: 0.25rem;
 }
+
+.heatmap{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+@media screen and (max-width: 1300px){
+	#masthead,
+	#middleimg{
+		background-size: 1300px 853px;
+	}
+}
+
+@media screen and (max-width: 1024px){
+	#masthead,
+	#middleimg {
+		background-size: 1024px 683px;
+	}
+}
+
+@media screen and (max-width: 600px){
+	.title{
+		font-size: 3rem;
+	}
+
+	.button{
+		font-size: 2rem;
+	}
+
+	.grid-8,
+	.grid-4 {
+		float: none;
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+
+	.third-grid li {
+		width: 45%;
+	}
+}
+
