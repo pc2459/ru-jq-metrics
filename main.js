@@ -1,6 +1,8 @@
 $(document).on('ready', function() {
 
 
+	
+
 	// Track when user came onto page
 	var enteredPage = new Date();
 	var clickedSignup,
@@ -110,6 +112,8 @@ $(document).on('ready', function() {
 		var totalTimeOnMiddle = timeOnMiddle/1000;
 		var totalTimeOnFooter = timeOnFooter/1000;
 
+		
+
 		var lightbox = '<div class="lightbox-bg"><div class="lightbox">' + 
 										'<p>Scrolled ' + percentScrolled + '%</p>' +
 										'<p>Scrolled a distance of ' + scrolled + '</p>' + 
@@ -120,10 +124,47 @@ $(document).on('ready', function() {
 										"<p>Spent " + totalTimeOnGallery.toFixed(2) + " seconds on the gallery</p>" +
 										"<p>Spent " + totalTimeOnMiddle.toFixed(2) + " seconds on the middle</p>" +
 										"<p>Spent " + totalTimeOnFooter.toFixed(2) + " seconds on the footer</p>" +
+										'<canvas id="chart" width="200" height="200"></canvas>' +
 										'<p><a href="#" id="close-lightbox">Close</a></p>' +
 										"</div></div>";
 
+
+
+
 		$("body").append(lightbox); 
+
+
+
+			// Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#chart").get(0).getContext("2d");
+
+		var data = [
+		    {
+		        value: totalTimeOnMasthead,
+		        color:"#F7464A",
+		        highlight: "#FF5A5E",
+		        label: "Masthead"
+		    },
+		    {
+		        value: totalTimeOnDemo,
+		        color: "#46BFBD",
+		        highlight: "#5AD3D1",
+		        label: "Demo"
+		    },
+		    {
+		        value: totalTimeOnGallery,
+		        color: "#FDB45C",
+		        highlight: "#FFC870",
+		        label: "Gallery"
+		    }
+		];
+
+
+			// This will get the first returned node in the jQuery collection.
+			var myNewChart = new Chart(ctx).Pie(data);
+
+			
+
 
 		// console.log("Clicked on stats");
 		// console.log("Scrolled " + percentScrolled + "%");
@@ -140,7 +181,9 @@ $(document).on('ready', function() {
 
 	// Hide lightbox
 	$("body").on("click","#close-lightbox",function(){
-		$(".lightbox, .lightbox-bg").hide();
+		
+		$(".lightbox, .lightbox-bg").remove();
+		return false;
 	});
 	  
 });
