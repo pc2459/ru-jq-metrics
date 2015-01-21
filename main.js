@@ -19,7 +19,7 @@ $(document).on('ready', function() {
 
 	$("#masthead").on("mouseenter", function(){
 		var mastEnter = new Date();
-		console.log("Entered masthead");
+		// console.log("Entered masthead");
 
 		// Save the mouseenter
 		var that = $(this);
@@ -30,16 +30,16 @@ $(document).on('ready', function() {
 			// Kill of the event listener from the mouseenter
 			that.off("mouseleave");
 		
-			console.log("Left masthead");
+			// console.log("Left masthead");
 		
 			timeOnMasthead += (mastLeave - mastEnter);
-			console.log(timeOnMasthead/1000);
+			// console.log(timeOnMasthead/1000);
 		})
 	})
 
 	$("#demo").on("mouseenter", function(){
 		var demoEnter = new Date();
-		console.log("Entered demo");
+		// console.log("Entered demo");
 
 		// Save the mouseenter
 		var that = $(this);
@@ -50,17 +50,17 @@ $(document).on('ready', function() {
 			// Kill of the event listener from the mouseenter
 			that.off("mouseleave");
 		
-			console.log("Left demo");
+			// console.log("Left demo");
 		
 			timeOnDemo += (demoLeave - demoEnter);
-			console.log(timeOnDemo/1000);
+			// console.log(timeOnDemo/1000);
 		})
 	})
 
 
 	$("#gallery").on("mouseenter", function(){
 		var galleryEnter = new Date();
-		console.log("Entered gallery");
+		// console.log("Entered gallery");
 
 		// Save the mouseenter
 		var that = $(this);
@@ -71,16 +71,16 @@ $(document).on('ready', function() {
 			// Kill of the event listener from the mouseenter
 			that.off("mouseleave");
 		
-			console.log("Left gallery");
+			// console.log("Left gallery");
 		
 			timeOnGallery += (galleryLeave - galleryEnter);
-			console.log(timeOnGallery/1000);
+			// console.log(timeOnGallery/1000);
 		})
 	})
 
 	$("#middleimg").on("mouseenter", function(){
 		var middleEnter = new Date();
-		console.log("Entered middle");
+		// console.log("Entered middle");
 
 		// Save the mouseenter
 		var that = $(this);
@@ -91,16 +91,16 @@ $(document).on('ready', function() {
 			// Kill of the event listener from the mouseenter
 			that.off("mouseleave");
 		
-			console.log("Left middle");
+			// console.log("Left middle");
 		
 			timeOnMiddle += (middleLeave - middleEnter);
-			console.log(timeOnMiddle/1000);
+			// console.log(timeOnMiddle/1000);
 		})
 	})
 
 	$("footer").on("mouseenter", function(){
 		var footerEnter = new Date();
-		console.log("Entered footer");
+		// console.log("Entered footer");
 
 		// Save the mouseenter
 		var that = $(this);
@@ -111,10 +111,10 @@ $(document).on('ready', function() {
 			// Kill of the event listener from the mouseenter
 			that.off("mouseleave");
 		
-			console.log("Left footer");
+			// console.log("Left footer");
 		
 			timeOnFooter += (footerLeave - footerEnter);
-			console.log(timeOnFooter/1000);
+			// console.log(timeOnFooter/1000);
 		})
 	})	
 
@@ -123,24 +123,56 @@ $(document).on('ready', function() {
 
 		// Determine total amount scrolled
 		var scrolled = $(window).scrollTop(),
-			doc = $(document).height(),
-			win = $(window).height();
+				doc = $(document).height(),
+				win = $(window).height();
 
 		percentScrolled = (scrolled/(doc-win)) * 100;
 
 		// Find time on page
-		var timeOnPage = (new Date() - enteredPage) / 1000;
-
+		var timeOnPage = ((new Date() - enteredPage) / 1000);
 
 		// Find time till sign up
-		var tillSignup = (clickedSignup - enteredPage) / 1000;
 
+		// var tillSignup = isNaN(clickedSignup) ?  : (clickedSignup - enteredPage) / 1000;
+		var tillSignup = ((clickedSignup - enteredPage) / 1000);
+
+		// Find time on sections 
+		timeOnMasthead = timeOnMasthead/1000; 
+		timeOnDemo = timeOnDemo / 1000; 
+		timeOnGallery = timeOnGallery/1000;
+		timeOnMiddle = timeOnMiddle/1000;
+		timeOnFooter = timeOnFooter/1000;
+
+		var lightbox = '<div class="lightbox-bg"><div class="lightbox">' + 
+										'<p>Scrolled ' + percentScrolled + '%</p>' +
+										'<p>Scrolled a distance of ' + scrolled + '</p>' + 
+										"<p>Been on page " + timeOnPage.toFixed(2) + " seconds</p>" +
+										"<p>Took " + tillSignup.toFixed(2) + " seconds till sign up</p>" +
+										"<p>Spent " + timeOnMasthead.toFixed(2) + " seconds on the masthead</p>" +
+										"<p>Spent " + timeOnDemo.toFixed(2) + " seconds on the demo</p>" +
+										"<p>Spent " + timeOnGallery.toFixed(2) + " seconds on the gallery</p>" +
+										"<p>Spent " + timeOnMiddle.toFixed(2) + " seconds on the middle</p>" +
+										"<p>Spent " + timeOnFooter.toFixed(2) + " seconds on the footer</p>" +
+										'<p><a href="#" id="close-lightbox">Close</a></p>' +
+										"</div></div>";
+
+		$("body").append(lightbox);
 
 		console.log("Clicked on stats");
 		console.log("Scrolled " + percentScrolled + "%");
 		console.log("Scrolled a distance of " + scrolled);
 		console.log("Been on page " + timeOnPage + " seconds");
 		console.log("Took " + tillSignup + " seconds till sign up");
+		console.log("Spent " + timeOnMasthead + " seconds on the masthead");
+		console.log("Spent " + timeOnDemo + " seconds on the demo");
+		console.log("Spent " + timeOnGallery + " seconds on the gallery");
+		console.log("Spent " + timeOnMiddle + " seconds on the middle");
+		console.log("Spent " + timeOnFooter + " seconds on the footer");
 	})
-  
+
+	// Hide lightbox
+	$("body").on("click","#close-lightbox",function(){
+		$(".lightbox, .lightbox-bg").hide();
+	})
+	  
 });
