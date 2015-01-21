@@ -161,6 +161,14 @@ section{
 	padding: 20px;
 }
 
+#close-lightbox{
+	color: #000;
+	text-decoration: none;
+	font-weight: 700;
+	float: right;
+
+}
+
 /* Masthead */
 
 .fullbg{

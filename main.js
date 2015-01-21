@@ -102,7 +102,7 @@ $(document).on('ready', function() {
 
 		// Find time till sign up
 
-		var signedUp = isNaN(clickedSignup) ? "<p>Not yet signed up.</p>" : ("<p>Took " + (clickedSignup - enteredPage) / 1000 + "seconds to sign up");
+		var signedUp = isNaN(clickedSignup) ? "<p>Not yet signed up.</p>" : ("<p>Took " + ((clickedSignup - enteredPage) / 1000).toFixed(2) + " seconds to sign up");
 		// var tillSignup = ((clickedSignup - enteredPage) / 1000);
 
 		// Find time on sections 
@@ -114,15 +114,16 @@ $(document).on('ready', function() {
 
 		
 
-		var lightbox = '<div class="lightbox-bg"><div class="lightbox">' + 
-										'<p>Scrolled ' + percentScrolled + '%</p>' +
+		var lightbox = '<div class="lightbox-bg center"><div class="lightbox">' +
+										'<h2>Statistics</h2>' + 
+										'<p>Scrolled ' + percentScrolled.toFixed(2) + '%</p>' +
 										'<p>Scrolled a distance of ' + scrolled + '</p>' + 
 										"<p>Been on page " + timeOnPage.toFixed(2) + " seconds</p>" +
 										signedUp +
 										"<p>Spent " + totalTimeOnMasthead.toFixed(2) + " seconds on the masthead</p>" +
 										"<p>Spent " + totalTimeOnDemo.toFixed(2) + " seconds on the demo</p>" +
 										"<p>Spent " + totalTimeOnGallery.toFixed(2) + " seconds on the gallery</p>" +
-										"<p>Spent " + totalTimeOnMiddle.toFixed(2) + " seconds on the middle</p>" +
+										"<p>Spent " + totalTimeOnMiddle.toFixed(2) + " seconds on the lower image</p>" +
 										"<p>Spent " + totalTimeOnFooter.toFixed(2) + " seconds on the footer</p>" +
 										'<canvas id="chart" width="200" height="200"></canvas>' +
 										'<p><a href="#" id="close-lightbox">Close</a></p>' +
@@ -156,7 +157,20 @@ $(document).on('ready', function() {
 		        color: "#FDB45C",
 		        highlight: "#FFC870",
 		        label: "Gallery"
+		    },
+		    {
+		        value: totalTimeOnMiddle,
+		        color: "#FFB0CB",
+		        highlight: "#E59EB6",
+		        label: "Lower Image"
+		    },
+		    {
+		        value: totalTimeOnFooter,
+		        color: "#CC45B6",
+		        highlight: "#CC68B6",
+		        label: "Footer"
 		    }
+
 		];
 
 
@@ -165,17 +179,6 @@ $(document).on('ready', function() {
 
 			
 
-
-		// console.log("Clicked on stats");
-		// console.log("Scrolled " + percentScrolled + "%");
-		// console.log("Scrolled a distance of " + scrolled);
-		// console.log("Been on page " + timeOnPage + " seconds");
-		// console.log("Took " + tillSignup + " seconds till sign up");
-		// console.log("Spent " + timeOnMasthead + " seconds on the masthead");
-		// console.log("Spent " + timeOnDemo + " seconds on the demo");
-		// console.log("Spent " + timeOnGallery + " seconds on the gallery");
-		// console.log("Spent " + timeOnMiddle + " seconds on the middle");
-		// console.log("Spent " + timeOnFooter + " seconds on the footer");
 		
 	});
 
