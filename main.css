@@ -26,6 +26,33 @@ section{
 /* General Stylings */
 
 
+.center-both {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.top-margin{
+	margin: 40px 0 0 0;
+}
+
+.left-float {
+	float: left;
+}
+
+.right-float{
+	overflow: hidden;
+}
+
+
+/* Grids */
 
 .column {
 	float: left;
@@ -47,28 +74,6 @@ section{
 .grid-3 {
 	width: 22%;
 }
-
-.center-both {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-}
-
-.center {
-	text-align: center;
-	margin: 0 auto;
-}
-
-.left-float {
-	float: left;
-}
-
-.right-float{
-	overflow: hidden;
-}
-
 
 .clearfix:after{
 	content: " ";
@@ -97,18 +102,14 @@ section{
 }
 
 
-
 /* Theme Styles */
 
 .button {
 	border: 2px solid #fff;
 	border-radius: 5px;
-
 	background-color: transparent;
-
 	color: #fff;
-	font-size: 4rem;
-
+	
 	padding: 15px 30px;
 }
 
@@ -123,20 +124,6 @@ section{
 
 	padding: 10px 25px;
 
-}
-
-.top-margin{
-	margin: 40px 0 0 0;
-}
-
-/* Buttons */
-
-#stats{
-	position: fixed;
-	right: 5px;
-	top: 5px;
-
-	font-size: 1em;
 }
 
 /* Lightbox */
@@ -169,21 +156,26 @@ section{
 
 }
 
+/**** SECTION STYLING ******/
+
 /* Masthead */
 
-.fullbg{
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	
+#stats{
+	position: fixed;
+	right: 5px;
+	top: 5px;
+
+	font-size: 1em;
 }
+
 
 #masthead{
 	height: 80%;
 	background: url("metricsbg.jpeg") no-repeat center center;
-
-
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .title {
@@ -192,12 +184,15 @@ section{
 	color: #fff;
 }
 
-#demo img {
-	max-width: 100%;
+#sign-up-button{
+	font-size: 4rem;
 }
 
 /* Demo */
 
+#demo img {
+	max-width: 100%;
+}
 
 /* Gallery Grid */
 
@@ -211,6 +206,10 @@ section{
 #middleimg {
 	height: 50%;
 	background: url("metricsmiddle.jpg") no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 /* Footer */
@@ -230,26 +229,15 @@ footer {
 	margin: 0;
 }
 
-@media screen and (max-width: 1300px){
-	#masthead,
-	#middleimg{
-		background-size: 1300px 853px;
-	}
-}
+/* Responsive Bits */
 
-@media screen and (max-width: 1024px){
-	#masthead,
-	#middleimg {
-		background-size: 1024px 683px;
-	}
-}
 
 @media screen and (max-width: 600px){
 	.title{
 		font-size: 3rem;
 	}
 
-	.button{
+	#sign-up-button{
 		font-size: 2rem;
 	}
 
@@ -259,6 +247,7 @@ footer {
 		display: block;
 		width: 100%;
 		text-align: center;
+		margin: 0;
 	}
 
 	.third-grid li {
