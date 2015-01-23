@@ -17,6 +17,7 @@ $(document).on('ready', function() {
 	// Track when user came onto page
 	var enteredPage = new Date();
 	var 	totalScrolled = 0,
+			totalDistance = 0,
 			clickedSignup,
 			timeOnMasthead = 0, 
 			timeOnDemo = 0, 
@@ -108,6 +109,8 @@ $(document).on('ready', function() {
 
 		percentScrolled = (scrolled/(doc-win)) * 100;
 
+		totalDistance += scrolled;
+
 		if (percentScrolled > totalScrolled) { totalScrolled = percentScrolled; }
 
 		// Find time on page
@@ -129,7 +132,7 @@ $(document).on('ready', function() {
 		var lightbox = '<div class="lightbox-bg center"><div class="lightbox">' +
 										'<h2>Statistics</h2>' + 
 										'<p>Scrolled ' + totalScrolled.toFixed(2) + '%</p>' +
-										'<p>Scrolled a distance of ' + scrolled + '</p>' + 
+										'<p>Scrolled a distance of ' + totalDistance + '</p>' + 
 										"<p>Been on page " + timeOnPage.toFixed(2) + " seconds</p>" +
 										signedUp +
 										"<p>Spent " + totalTimeOnMasthead.toFixed(2) + " seconds on the masthead</p>" +
